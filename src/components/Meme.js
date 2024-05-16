@@ -25,8 +25,12 @@ export const Meme = ({ meme }) => {
       <figure>
         <a href={meme.url} title={meme.title} target="_blank" rel="noreferrer">
           <picture>
-            <source media="(min-width:1920px)" srcSet={meme.preview[2]} />
-            <source media="(min-width:1080px)" srcSet={meme.preview[1]} />
+            {meme.preview.length >= 2 && (
+              <source media="(min-width:1920px)" srcSet={meme.preview[2]} />
+            )}
+            {meme.preview.length >= 1 && (
+              <source media="(min-width:1080px)" srcSet={meme.preview[1]} />
+            )}
             <img src={meme.preview[0]} alt={meme.title} />
           </picture>
         </a>

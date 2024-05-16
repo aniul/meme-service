@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Navigation } from "./components/Navigation";
 import { FavouritesMemesPage } from "./pages/FavouritesMemesPage";
@@ -13,46 +13,51 @@ import "./app.css";
 const memeApiUrl = "https://meme-api.com/gimme/50";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
-  // useEffect(
-  //   () => async () => {
-  //     try {
-  //       await fetch(memeApiUrl)
-  //         .then((response) => response.json())
-  //         .then(({ memes }) => {
-  //           dispatch({
-  //             type: "UPDATE_MEMES",
-  //             payload: memes.map((meme, index) => ({
-  //               id: index,
-  //               title: meme.title,
-  //               sources: meme.preview,
-  //               url: meme.url,
-  //               upvotes: 0,
-  //               downvotes: 0,
-  //             })),
-  //           });
-  //         });
-  //     } catch (error) {
-  //       alert("Failed to fetch memes");
-  //     }
-  //   },
-  //   [dispatch]
-  // );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetch(memeApiUrl)
+          .then((response) => response.json())
+          .then(({ memes }) => {
+            if (memes && memes.length)
+              dispatch({
+                type: "UPDATE_MEMES",
+                payload: memes.map((meme, index) => ({
+                  id: index,
+                  title: meme.title,
+                  preview: meme.preview,
+                  url: meme.url,
+                  upvotes: 0,
+                  downvotes: 0,
+                  favourite: false,
+                })),
+              });
+          });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div className="app">
       <BrowserRouter>
         <Navigation />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/hot" element={<HotMemesPage />} />
-            <Route path="/regular" element={<RegularMemesPage />} />
-            <Route path="/favourites" element={<FavouritesMemesPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </main>
+        {!isLoading ? (
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/hot" element={<HotMemesPage />} />
+              <Route path="/regular" element={<RegularMemesPage />} />
+              <Route path="/favourites" element={<FavouritesMemesPage />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </main>
+        ) : null}
       </BrowserRouter>
     </div>
   );
