@@ -1,7 +1,7 @@
+import { useSelector } from "react-redux";
+import { MemesList } from "../components/MemesList";
+
 export const HomePage = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
+  const memes = useSelector((state) => state.memes);
+  return <MemesList memes={memes} />;
 };
