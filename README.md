@@ -1,3 +1,7 @@
+# App description
+
+This app allows you to browse not really funny memes from reddit.com. It also allows you to rate them (positive and negative). The best rated memes will be displayed under the ‘/hot’ url and the others under the ‘/regular’ url. It is also possible to add memes to favourites (visible later under the ‘/favourites’ link). You can also add your own meme (url ‘add-meme’).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,11 +17,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
