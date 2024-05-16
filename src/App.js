@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigation } from "./components/Navigation";
+import { FavouritesMemesPage } from "./pages/FavouritesMemesPage";
 import { HomePage } from "./pages/HomePage";
 import { HotMemesPage } from "./pages/HotMemesPage";
 import { RegularMemesPage } from "./pages/RegularMemesPage";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/hot" element={<HotMemesPage />} />
             <Route path="/regular" element={<RegularMemesPage />} />
+            <Route path="/favourites" element={<FavouritesMemesPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </main>

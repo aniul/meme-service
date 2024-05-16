@@ -12,6 +12,9 @@ export const Navigation = () => {
       <li>
         <NavLink to="/regular">Regular</NavLink>
       </li>
+      <li>
+        <NavLink to="/favourites">Favourites</NavLink>
+      </li>
     </ul>
   );
 };

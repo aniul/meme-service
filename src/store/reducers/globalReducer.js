@@ -12,6 +12,7 @@ const initState = {
       ],
       upvotes: 0,
       downvotes: 0,
+      favourite: false,
     },
     {
       id: 1,
@@ -25,6 +26,7 @@ const initState = {
       ],
       upvotes: 0,
       downvotes: 0,
+      favourite: false,
     },
   ],
 };
@@ -47,14 +49,14 @@ export const memeReducer = (state = initState, action) => {
         ),
       };
     }
-    case "DOWNVOTE_MEME": {
+    case "TOGGLE_FAVOURITE": {
       return {
         ...state,
         memes: state.memes.map((meme) =>
           meme.id === action.payload
             ? {
                 ...meme,
-                downvotes: meme.downvotes + 1,
+                favourite: !meme.favourite,
               }
             : meme
         ),

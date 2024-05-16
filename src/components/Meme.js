@@ -14,6 +14,12 @@ export const Meme = ({ meme }) => {
       payload: meme.id,
     });
   };
+  const toggleAsFavourite = () => {
+    dispatch({
+      type: "TOGGLE_FAVOURITE",
+      payload: meme.id,
+    });
+  };
   return (
     <li>
       <figure>
@@ -33,6 +39,7 @@ export const Meme = ({ meme }) => {
           <span>{meme.downvotes} downvotes</span>
           <button onClick={downvoteMeme}>downvote</button>
         </p>
+        <button onClick={toggleAsFavourite}>favourite!</button>
       </figure>
     </li>
   );
