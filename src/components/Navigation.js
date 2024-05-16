@@ -15,6 +15,9 @@ export const Navigation = () => {
       <li>
         <NavLink to="/favourites">Favourites</NavLink>
       </li>
+      <li>
+        <NavLink to="/add-meme">Add meme</NavLink>
+      </li>
     </ul>
   );
 };

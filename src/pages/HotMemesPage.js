@@ -8,7 +8,7 @@ export const HotMemesPage = () => {
   );
   return (
     <div>
-      <h1>Hot Memes Page</h1>
+      <h1>Hot Memes</h1>
       <MemesList memes={hotMemes} />
     </div>
   );

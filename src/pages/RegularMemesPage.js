@@ -8,7 +8,7 @@ export const RegularMemesPage = () => {
   );
   return (
     <div>
-      <h1>Regular Memes Page</h1>
+      <h1>Regular Memes</h1>
       <MemesList memes={regularMemes} />
     </div>
   );

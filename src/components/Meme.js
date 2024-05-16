@@ -22,17 +22,15 @@ export const Meme = ({ meme }) => {
   };
   return (
     <figure>
-      <a href={meme.url} title={meme.title} target="_blank" rel="noreferrer">
-        <picture>
-          {meme.preview.length >= 2 && (
-            <source media="(min-width:1920px)" srcSet={meme.preview[2]} />
-          )}
-          {meme.preview.length >= 1 && (
-            <source media="(min-width:1080px)" srcSet={meme.preview[1]} />
-          )}
-          <img src={meme.preview[0]} alt={meme.title} />
-        </picture>
-      </a>
+      <picture>
+        {meme.preview.length > 1 && (
+          <source media="(min-width:1920px)" srcSet={meme.preview[2]} />
+        )}
+        {meme.preview.length > 0 && (
+          <source media="(min-width:1080px)" srcSet={meme.preview[1]} />
+        )}
+        <img src={meme.preview[0]} alt={meme.title} />
+      </picture>
       <figcaption>{meme.title}</figcaption>
       <p>
         <span>{meme.upvotes} upvotes</span>
