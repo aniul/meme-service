@@ -4,7 +4,9 @@ export const MemesList = ({ memes }) => {
   return memes && memes.length ? (
     <ul>
       {memes.map((meme) => (
-        <Meme key={meme.id} meme={meme} />
+        <li key={meme.id}>
+          <Meme meme={meme} />
+        </li>
       ))}
     </ul>
   ) : (
