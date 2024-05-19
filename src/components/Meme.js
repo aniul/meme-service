@@ -1,4 +1,12 @@
 import { useDispatch } from "react-redux";
+import ThumbUpIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbDownIcon from "@mui/icons-material/ThumbDownAlt";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { ProgressiveImg } from "./ProgressiveImg";
+import styles from "./Meme.module.scss";
+
+const iconStyle = { color: "#4169e2" };
 
 export const Meme = ({ meme }) => {
   const dispatch = useDispatch();
@@ -21,26 +29,36 @@ export const Meme = ({ meme }) => {
     });
   };
   return (
-    <figure>
-      <picture>
-        {meme.preview.length > 1 && (
-          <source media="(min-width:1920px)" srcSet={meme.preview[2]} />
-        )}
-        {meme.preview.length > 0 && (
-          <source media="(min-width:1080px)" srcSet={meme.preview[1]} />
-        )}
-        <img src={meme.preview[0]} alt={meme.title} />
-      </picture>
-      <figcaption>{meme.title}</figcaption>
-      <p>
-        <span>{meme.upvotes} upvotes</span>
-        <button onClick={upvoteMeme}>upvote</button>
-      </p>
-      <p>
-        <span>{meme.downvotes} downvotes</span>
-        <button onClick={downvoteMeme}>downvote</button>
-      </p>
-      <button onClick={toggleAsFavourite}>favourite!</button>
+    <figure className={styles.meme}>
+      <div>
+        <ProgressiveImg
+          src={meme.preview[meme.preview.length - 1]}
+          placeholderSrc={meme.preview[0]}
+          alt={meme.title}
+        />
+      </div>
+      <figcaption className="font-uppercase">{meme.title}</figcaption>
+      <nav>
+        <p>
+          <button onClick={upvoteMeme}>
+            <ThumbUpIcon style={iconStyle} />
+          </button>
+          <span>{meme.upvotes}</span>
+        </p>
+        <p>
+          <button onClick={downvoteMeme}>
+            <ThumbDownIcon style={iconStyle} />
+          </button>
+          <span>{meme.downvotes}</span>
+        </p>
+        <button onClick={toggleAsFavourite}>
+          {meme.favourite ? (
+            <StarIcon style={iconStyle} />
+          ) : (
+            <StarBorderIcon style={iconStyle} />
+          )}
+        </button>
+      </nav>
     </figure>
   );
 };

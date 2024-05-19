@@ -48,6 +48,19 @@ export const memeReducer = (state = initState, action) => {
         ),
       };
     }
+    case "DOWNVOTE_MEME": {
+      return {
+        ...state,
+        memes: state.memes.map((meme) =>
+          meme.id === action.payload
+            ? {
+                ...meme,
+                downvotes: meme.downvotes + 1,
+              }
+            : meme
+        ),
+      };
+    }
     case "TOGGLE_FAVOURITE": {
       return {
         ...state,

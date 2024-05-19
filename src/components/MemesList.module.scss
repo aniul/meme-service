@@ -1,0 +1,9 @@
+@import "src/styles/global";
+
+.list {
+  li {
+    width: $content-width;
+    height: calc(100vh - $navbar-height - 10rem);
+    margin-bottom: $content-margin;
+  }
+}

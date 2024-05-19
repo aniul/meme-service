@@ -1,8 +1,9 @@
 import { Meme } from "./Meme";
+import styles from "./MemesList.module.scss";
 
 export const MemesList = ({ memes }) => {
   return memes && memes.length ? (
-    <ul>
+    <ul className={styles.list}>
       {memes.map((meme) => (
         <li key={meme.id}>
           <Meme meme={meme} />

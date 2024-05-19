@@ -1,0 +1,78 @@
+@import "src/styles/global";
+
+.form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  form {
+    width: $content-width;
+    border: 1px solid $blue;
+    flex-grow: 1;
+    margin-bottom: $content-margin;
+    padding: $content-margin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  div {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+    p {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: calc($navbar-height / 2);
+      text-align: left;
+      background-color: $pink;
+      border: 1px solid $pink;
+      z-index: 1;
+    }
+  }
+  label {
+    margin-bottom: 1em;
+    width: 100%;
+    text-align: left;
+    line-height: 1em;
+  }
+  input {
+    width: 100%;
+  }
+  input[type="file"] {
+    opacity: 0;
+  }
+  button {
+    @include button-hover;
+    align-self: flex-end;
+  }
+  input,
+  button,
+  .file-label::after {
+    cursor: pointer;
+    color: $blue;
+    background-color: $pink;
+    border: 1px solid $blue;
+    height: calc($navbar-height / 2);
+    line-height: calc($navbar-height / 2);
+    padding: 0 1.5em;
+  }
+}
+
+.file-label {
+  position: relative;
+  &::after {
+    content: "Choose a meme";
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 2em;
+  }
+}

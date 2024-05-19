@@ -1,23 +1,26 @@
-import { NavLink } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
+import styles from "./Navigation.module.scss";
+import { NavigationItem } from "./NavigationItem";
 
 export const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    console.log("tog");
+    setIsMenuOpen((prevState) => !prevState);
+  };
   return (
-    <ul className="navbar">
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/hot">Hot</NavLink>
-      </li>
-      <li>
-        <NavLink to="/regular">Regular</NavLink>
-      </li>
-      <li>
-        <NavLink to="/favourites">Favourites</NavLink>
-      </li>
-      <li>
-        <NavLink to="/add-meme">Add meme</NavLink>
-      </li>
-    </ul>
+    <nav className={`${styles.navbar} font-uppercase`}>
+      <div className={styles.burger}>
+        <MenuIcon onClick={toggleMenu} />
+      </div>
+      <ul className={isMenuOpen ? styles.menu : "none"} onClick={toggleMenu}>
+        <NavigationItem url="/" label="Home" />
+        <NavigationItem url="/hot" label="Hot" />
+        <NavigationItem url="/regular" label="Regular" />
+        <NavigationItem url="/favourites" label="Favourites" />
+        <NavigationItem url="/add-meme" label="Add meme" />
+      </ul>
+    </nav>
   );
 };

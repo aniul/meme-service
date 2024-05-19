@@ -9,7 +9,7 @@ import { HotMemesPage } from "./pages/HotMemesPage";
 import { RegularMemesPage } from "./pages/RegularMemesPage";
 import { ErrorPage } from "./pages/ErrorPage";
 
-import "./app.css";
+import "./styles/global.scss";
 
 const memeApiUrl = "https://meme-api.com/gimme/50";
 

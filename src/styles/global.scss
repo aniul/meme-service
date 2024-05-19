@@ -1,0 +1,82 @@
+@import "vars";
+@import "typography";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: $blue;
+  background-color: $pink;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  text-align: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding-top: $navbar-height;
+  @include mobile {
+    padding-top: $clickable-area;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 3em;
+  font-family: "Danfo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "ELSH" 0;
+}
+
+button {
+  background: transparent;
+  border: none;
+  -webkit-appearance: none;
+}
+
+svg {
+  cursor: pointer;
+  transition: opacity 0.5s linear;
+  &:hover {
+    opacity: 0.6;
+  }
+}

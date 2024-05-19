@@ -1,0 +1,72 @@
+@import "src/styles/global";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $pink;
+  ul {
+    border: 1px solid $blue;
+    display: flex;
+  }
+  li {
+    width: 100%;
+    &:not(:first-child) {
+      border-left: 1px solid $blue;
+    }
+  }
+  a {
+    @include button-hover;
+    color: $blue;
+    display: inline-block;
+    width: 100%;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    &.active {
+      background-color: $blue;
+      color: $pink;
+    }
+  }
+  @include mobile {
+    ul {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: $pink;
+    }
+    li {
+      flex-grow: 1;
+      &:not(:first-child) {
+        border-top: 1px solid $blue;
+        border-left: none;
+      }
+    }
+    a {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: $clickable-area;
+  height: $clickable-area;
+  border: 1px solid $blue;
+  margin: auto;
+  @include mobile {
+    display: flex;
+  }
+}
+
+ul.menu {
+  display: flex;
+}

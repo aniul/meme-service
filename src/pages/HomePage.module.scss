@@ -1,0 +1,16 @@
+@import "src/styles/global";
+
+.home {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  figure {
+    width: $content-width;
+    margin-bottom: $content-margin;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
