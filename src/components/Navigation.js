@@ -6,7 +6,6 @@ import { NavigationItem } from "./NavigationItem";
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
-    console.log("tog");
     setIsMenuOpen((prevState) => !prevState);
   };
   return (
