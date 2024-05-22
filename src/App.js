@@ -20,21 +20,19 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetch(memeApiUrl)
-          .then((response) => response.json())
-          .then(({ memes }) => {
-            if (memes && memes.length)
-              dispatch({
-                type: "UPDATE_MEMES",
-                payload: memes.map((meme, index) => ({
-                  id: index,
-                  title: meme.title,
-                  preview: meme.preview,
-                  upvotes: 0,
-                  downvotes: 0,
-                  favourite: false,
-                })),
-              });
+        const response = await fetch(memeApiUrl);
+        const memes = await response.json();
+        if (memes && memes.length)
+          dispatch({
+            type: "UPDATE_MEMES",
+            payload: memes.map((meme, index) => ({
+              id: index,
+              title: meme.title,
+              preview: meme.preview,
+              upvotes: 0,
+              downvotes: 0,
+              favourite: false,
+            })),
           });
       } finally {
         setIsLoading(false);
