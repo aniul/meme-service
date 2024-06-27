@@ -21,7 +21,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await fetch(memeApiUrl);
-        const memes = await response.json();
+        const { memes } = await response.json();
         if (memes && memes.length)
           dispatch({
             type: "UPDATE_MEMES",
